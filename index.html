@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    td {
+        border: 1px solid black;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+</head>
+<body>
+
+<table>
+    <tbody id="tableBody">
+        <!-- Таблица будет заполнена с помощью JavaScript -->
+    </tbody>
+</table>
+
+<button onclick="addNumber()">Добавить число</button>
+
+<script>
+    // Создаем массив с 30 случайными числами от 0 до 99
+    let numbers = [];
+    for (let i = 0; i < 30; i++) {
+        numbers.push(Math.floor(Math.random()  * 100));
+    }
+
+    // Функция для создания таблицы
+    function createTable() {
+        let tableBody = document.getElementById('tableBody');
+
+        let count = 0;
+        for (let i = 0; i < 5; i++) {
+            let row = document.createElement('tr');
+            for (let j = 0; j < 6; j++) {
+                let cell = document.createElement('td');
+                cell.textContent = numbers[count];
+                if (numbers[count] >= 50) {
+                    cell.style.backgroundColor = 'orange';
+                }
+                row.appendChild(cell);
+                count++;
+            }
+            tableBody.appendChild(row);
+        }
+    }
+
+    // Вызываем функцию создания таблицы при загрузке страницы
+    createTable();
+
+    // Функция для добавления случайного числа в таблицу
+    function addNumber() {
+        let tableBody = document.getElementById('tableBody');
+        let cell = document.createElement('td');
+        let randomNum = Math.floor(Math.random()  * 100);
+        cell.textContent = randomNum;
+        if (randomNum >= 50) {
+            cell.style.backgroundColor = 'orange';
+        }
+        tableBody.appendChild(cell);
+    }
+</script>
+
+</body>
+</html>
